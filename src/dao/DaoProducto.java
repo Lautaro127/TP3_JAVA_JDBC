@@ -8,7 +8,7 @@ import java.util.concurrent.Callable;
 import entidad.Producto;
 
 public class DaoProducto {
-	private String host = "jdbc:mysql://root:3306/";
+	private String host = "jdbc:mysql://localhost:3306/";
 	private String user = "root";
 	private String pass = "root";
 	private String baseDeDatoString = "bdinventario";
@@ -26,12 +26,7 @@ public class DaoProducto {
 		Connection conexion = null;
 		
 		try {
-			conexion = DriverManager.getConnection(host+baseDeDatoString, user, pass);
-		} catch (Exception e) {
-			System.out.println("No se pudo conectar a la base de datos");
-		}
-		
-		try {
+			conexion = DriverManager.getConnection(host+baseDeDatoString + "?useSSL=false", user, pass);
 			CallableStatement cs =  conexion.prepareCall("CALL sp_AgregarProducto(?,?,?,?,?)");
 			cs.setString(1, producto.getCodigo());
 			cs.setString(2, producto.getNombre());
@@ -40,8 +35,9 @@ public class DaoProducto {
 			cs.setInt(5, producto.getId());
 			cs.execute();
 		} catch (Exception e) {
-			// TODO: handle exception
+			System.out.println("No se pudo conectar a la base de datos");
 		}
+		
 	}
 	
 }
