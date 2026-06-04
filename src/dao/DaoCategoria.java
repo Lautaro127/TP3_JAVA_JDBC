@@ -67,7 +67,6 @@ public class DaoCategoria {
 		return listaCategorias;
 	}
 
-
 	public void eliminarCategoria(int id) {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
@@ -85,6 +84,27 @@ public class DaoCategoria {
 			ps.executeUpdate();
 		} catch (Exception e) {
 			System.out.println("No funco maestro 2");
+		}
+	}
+
+	public void modificarNombre(String nuevoNombre, int id) {
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		Connection conexion = null;
+		
+		try {
+			conexion = DriverManager.getConnection(host+baseDeDatoString+"?useSSL=false", user, pass);
+			query = "UPDATE categorias SET Nombre = ? WHERE IdCategoria = ?";
+			PreparedStatement ps = conexion.prepareStatement(query);
+			ps.setString(1, nuevoNombre);
+			ps.setInt(2, id);
+			ps.executeUpdate();
+		} catch (Exception e) {
+			// TODO: handle exception
 		}
 	}
 }

@@ -12,9 +12,9 @@ public class Principal {
 	public static void main(String[] args) {
 	
 		
-		DaoProducto dp = new DaoProducto();
+		DaoCategoria dp = new DaoCategoria();
 		
-		dp.modificarCodigo("PROD001", "PROD031");
+		dp.modificarNombre("Dio Brando", 1);
 		
 
 	}
