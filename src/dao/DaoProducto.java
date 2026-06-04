@@ -6,7 +6,6 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import java.util.concurrent.Callable;
 
 import entidad.Producto;
 
@@ -72,5 +71,136 @@ public class DaoProducto {
 			// TODO: handle exception
 		}
 		return listaProductos;
+	}
+
+	public void eliminarProducto(String CodigoProducto) {
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
+			System.out.println("No funco maestro");
+			e.printStackTrace();
+		}
+		Connection conexion = null;
+
+		try {
+			conexion = DriverManager.getConnection(host+baseDeDatoString+"?useSSL=false", user, pass);
+			query = "DELETE FROM productos WHERE Codigo = ?";
+			PreparedStatement ps = conexion.prepareStatement(query);
+			ps.setString(1, CodigoProducto);
+			ps.executeUpdate();
+		} catch (Exception e) {
+			System.out.println("No funco maestro 2");
+		}
+	}
+
+	public void modificarNombre(String nombreNuevo, String Codigo) {
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		Connection conexion = null;
+		
+		try {
+			conexion = DriverManager.getConnection(host+baseDeDatoString+"?useSSL=false", user, pass);
+			query = "UPDATE productos SET Nombre = ? WHERE Codigo = ?;";
+			PreparedStatement ps = conexion.prepareStatement(query);
+			ps.setString(1, nombreNuevo);
+			ps.setString(2, Codigo);
+			ps.executeUpdate();
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
+
+	public void modificarCodigo(String codigoNuevo, String Codigo) {
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		Connection conexion = null;
+		
+		try {
+			conexion = DriverManager.getConnection(host+baseDeDatoString+"?useSSL=false", user, pass);
+			query = "UPDATE productos SET Codigo = ? WHERE Codigo = ?;";
+			PreparedStatement ps = conexion.prepareStatement(query);
+			ps.setString(1, codigoNuevo);
+			ps.setString(2, Codigo);
+			ps.executeUpdate();
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
+	
+	public void modificarPrecio(double PrecioNuevo, String Codigo) {
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		Connection conexion = null;
+		
+		try {
+			conexion = DriverManager.getConnection(host+baseDeDatoString+"?useSSL=false", user, pass);
+			query = "UPDATE productos SET Precio = ? WHERE Codigo = ?;";
+			PreparedStatement ps = conexion.prepareStatement(query);
+			ps.setDouble(1, PrecioNuevo);
+			ps.setString(2, Codigo);
+			ps.executeUpdate();
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
+	
+	public void modificarStock(int stockNuevo, String Codigo) {
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		Connection conexion = null;
+		
+		try {
+			conexion = DriverManager.getConnection(host+baseDeDatoString+"?useSSL=false", user, pass);
+			query = "UPDATE productos SET Stock = ? WHERE Codigo = ?;";
+			PreparedStatement ps = conexion.prepareStatement(query);
+			ps.setInt(1,stockNuevo);
+			ps.setString(2, Codigo);
+			ps.executeUpdate();
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
+	
+	
+	public void modificarIdCateogria(int stockId, String Codigo) {
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		Connection conexion = null;
+		
+		try {
+			conexion = DriverManager.getConnection(host+baseDeDatoString+"?useSSL=false", user, pass);
+			query = "UPDATE productos SET IdCategoria = ? WHERE Codigo = ?;";
+			PreparedStatement ps = conexion.prepareStatement(query);
+			ps.setInt(1,stockId);
+			ps.setString(2, Codigo);
+			ps.executeUpdate();
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 	}
 }

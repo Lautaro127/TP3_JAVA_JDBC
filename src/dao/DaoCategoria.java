@@ -7,7 +7,6 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 import entidad.Categoria;
-import entidad.Producto;
 
 public class DaoCategoria {
 	private String host = "jdbc:mysql://localhost:3306/";
@@ -66,5 +65,26 @@ public class DaoCategoria {
 			// TODO: handle exception
 		}
 		return listaCategorias;
+	}
+
+
+	public void eliminarCategoria(int id) {
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
+			System.out.println("No funco maestro");
+			e.printStackTrace();
+		}
+		
+		try {
+			Connection conexion = null;
+			conexion = DriverManager.getConnection(host+baseDeDatoString+"?useSSL=false", user, pass);
+			query = "DELETE FROM categorias WHERE IdCategoria = ?";
+			PreparedStatement ps = conexion.prepareStatement(query);
+			ps.setInt(1, id);
+			ps.executeUpdate();
+		} catch (Exception e) {
+			System.out.println("No funco maestro 2");
+		}
 	}
 }
