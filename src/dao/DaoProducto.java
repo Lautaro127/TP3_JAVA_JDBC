@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import entidad.Producto;
@@ -40,6 +41,13 @@ public class DaoProducto {
 			System.out.println("No se pudo conectar a la base de datos");
 		}
 		
+		try {
+			conexion.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 	
 	public ArrayList<Producto> listarProductos() {
@@ -70,6 +78,14 @@ public class DaoProducto {
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
+		
+		try {
+			conexion.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		return listaProductos;
 	}
 
@@ -90,6 +106,13 @@ public class DaoProducto {
 			ps.executeUpdate();
 		} catch (Exception e) {
 			System.out.println("No funco maestro 2");
+		}
+		
+		try {
+			conexion.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 
@@ -113,6 +136,13 @@ public class DaoProducto {
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
+		
+		try {
+			conexion.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public void modificarCodigo(String codigoNuevo, String Codigo) {
@@ -134,6 +164,13 @@ public class DaoProducto {
 			ps.executeUpdate();
 		} catch (Exception e) {
 			// TODO: handle exception
+		}
+		
+		try {
+			conexion.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 	
@@ -157,6 +194,13 @@ public class DaoProducto {
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
+		
+		try {
+			conexion.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	public void modificarStock(int stockNuevo, String Codigo) {
@@ -178,6 +222,13 @@ public class DaoProducto {
 			ps.executeUpdate();
 		} catch (Exception e) {
 			// TODO: handle exception
+		}
+		
+		try {
+			conexion.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 	
@@ -201,6 +252,14 @@ public class DaoProducto {
 			ps.executeUpdate();
 		} catch (Exception e) {
 			// TODO: handle exception
+		}
+		
+		
+		try {
+			conexion.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 }

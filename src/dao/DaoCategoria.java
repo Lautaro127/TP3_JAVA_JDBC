@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import entidad.Categoria;
@@ -37,6 +38,13 @@ public class DaoCategoria {
 			System.out.println("No se pudo conectar a la base de datos");
 		}
 		
+		try {
+			conexion.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 	
 	public ArrayList<Categoria> listarCategorias() {
@@ -64,6 +72,12 @@ public class DaoCategoria {
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
+		try {
+			conexion.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return listaCategorias;
 	}
 
@@ -74,9 +88,9 @@ public class DaoCategoria {
 			System.out.println("No funco maestro");
 			e.printStackTrace();
 		}
-		
+		Connection conexion = null;
+
 		try {
-			Connection conexion = null;
 			conexion = DriverManager.getConnection(host+baseDeDatoString+"?useSSL=false", user, pass);
 			query = "DELETE FROM categorias WHERE IdCategoria = ?";
 			PreparedStatement ps = conexion.prepareStatement(query);
@@ -84,6 +98,14 @@ public class DaoCategoria {
 			ps.executeUpdate();
 		} catch (Exception e) {
 			System.out.println("No funco maestro 2");
+			e.printStackTrace();
+		}
+		
+		try {
+			conexion.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 
@@ -105,6 +127,13 @@ public class DaoCategoria {
 			ps.executeUpdate();
 		} catch (Exception e) {
 			// TODO: handle exception
+		}
+		
+		try {
+			conexion.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 }
