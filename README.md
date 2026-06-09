@@ -1,6 +1,6 @@
 # TP3 - Sistema de Gestión de Inventario
 
-Aplicación de consola en **Java** con **MySQL** que implementa ABML (Alta, Baja, Modificación y Listado) de categorías y productos.
+Este trabajo práctico implementa una solución de gestión de inventario que permite realizar operaciones CRUD sobre productos y categorías. La aplicación demuestra el uso de patrones de diseño DAO (Data Access Object) para separar la lógica de acceso a datos de la lógica de negocio, utilizando conexiones directas a MySQL y consultas preparadas.
 
 ## ⚠️ Nota Importante
 
@@ -44,16 +44,3 @@ DELIMITER ;
 - **Java** 8+
 - **MySQL** 5.7+
 - **JDBC Driver** - MySQL Connector/J
-
-## 📦 Estructura
-
-src/
-├── dao/
-│   ├── DaoCategoria.java
-│   └── DaoProducto.java
-├── entidad/
-│   ├── Categoria.java
-│   └── Producto.java
-└── main/
-└── Principal.java
-
