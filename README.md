@@ -4,9 +4,7 @@ Aplicación de consola en **Java** con **MySQL** que implementa ABML (Alta, Baja
 
 ## ⚠️ Nota Importante
 
-**La base de datos NO fue realizada por el autor.** Solo se implementó el código. Ejecuta primero el script SQL proporcionado en la consigna.
-
-**La implementación de la estructura de la base de datos (tablas, índices y el procedimiento almacenado `sp_AgregarProducto`) NO fue realizada por el autor de este código.**
+**La estructura de la base de datos (tablas, índices y el procedimiento almacenado `sp_AgregarProducto`) NO fue realizada por el autor de este código porque fue proporcionada junto a la consigna del trabajo practico.**
 
 CREATE DATABASE bdInventario;
 USE bdInventario;
